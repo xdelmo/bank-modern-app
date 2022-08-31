@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./style";
 import {
+  ButtonScrollTop,
   Hero,
   Navbar,
   Stats,
@@ -21,25 +22,14 @@ const App = () => {
       transition: {
         duration: 1,
         delay: 0.5,
-        staggerChildren: 0.2,
+        staggerChildren: 2,
       },
     },
   };
 
-  // const showChildrenVariants = {
-  //   hidden: { opacity: 0, scale: 0.5 },
-  //   show: {
-  //     opacity: 1,
-  //     scale: 1,
-  //     transition: {
-  //       duration: 1,
-  //     },
-  //   },
-  // };
-
   const slideRightVariants = {
     hidden: {
-      x: "-90vw",
+      x: "-80%",
       opacity: 0,
     },
     whileInView: {
@@ -54,7 +44,7 @@ const App = () => {
 
   const slideLeftVariants = {
     hidden: {
-      x: "90vw",
+      x: "80%",
       opacity: 0,
     },
     whileInView: {
@@ -69,6 +59,7 @@ const App = () => {
 
   return (
     <div className="w-full overflow-hidden bg-primary">
+      <ButtonScrollTop />
       <div className={`${styles.paddingX} ${styles.flexCenter} `}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -82,7 +73,7 @@ const App = () => {
       </div>
 
       <div className={`bg-primary ${styles.paddingX}  ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth} `}>
+        <div className={`${styles.boxWidth}`}>
           <Stats />
           <Business slideRightVariants={slideRightVariants} />
           <Billing slideLeftVariants={slideLeftVariants} />
