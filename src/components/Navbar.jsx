@@ -33,6 +33,19 @@ function Navbar() {
     show: { opacity: 1 },
   };
 
+  // disable page scrolling if mobile navbar is open
+  if (toggle) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+    // if any scroll is attempted, set this to the previous value
+    window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  } else {
+    window.onscroll = function () {};
+  }
+
   return (
     <nav className="flex items-center justify-between w-full py-6 navbar">
       {/* LOGO */}
@@ -83,7 +96,7 @@ function Navbar() {
         <div
           className={`${
             toggle ? "flex" : "hidden"
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-[1]`}
         >
           <ul className="flex flex-col items-center justify-end flex-1 list-none">
             {/* last navLinks has no margin right */}
