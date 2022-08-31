@@ -1,9 +1,27 @@
 import React from "react";
 import { quotes } from "../assets";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const FeedbackCard = ({ content, name, title, img }) => {
   return (
-    <div className="flex justify-between flex-col px-10 py-12 rounded-[20px] max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card">
+    <motion.div
+      className="flex justify-between flex-col px-10 py-12 rounded-[20px] max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card"
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+    >
       <img
         src={quotes}
         alt="double_quotes"
@@ -25,7 +43,7 @@ const FeedbackCard = ({ content, name, title, img }) => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

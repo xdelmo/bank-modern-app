@@ -15,18 +15,6 @@ import {
 } from "./components/";
 
 const App = () => {
-  const showWithChildrenVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 0.5,
-        staggerChildren: 2,
-      },
-    },
-  };
-
   const slideRightVariants = {
     hidden: {
       x: "-80%",
@@ -42,19 +30,33 @@ const App = () => {
     viewport: { once: true },
   };
 
-  const slideLeftVariants = {
+  // const slideLeftVariants = {
+  //   hidden: {
+  //     x: "80%",
+  //     opacity: 0,
+  //   },
+  //   whileInView: {
+  //     x: "0",
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 2,
+  //     },
+  //   },
+  //   viewport: { once: true },
+  // };
+
+  const scaleUpVariants = {
     hidden: {
-      x: "80%",
       opacity: 0,
+      scale: 0.5,
     },
     whileInView: {
-      x: "0",
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 2,
+        duration: 1,
       },
     },
-    viewport: { once: true },
   };
 
   return (
@@ -68,16 +70,16 @@ const App = () => {
 
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero showWithChildrenVariants={showWithChildrenVariants} />
+          <Hero slideRightVariants={slideRightVariants} />
         </div>
       </div>
 
       <div className={`bg-primary ${styles.paddingX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Stats />
-          <Business slideRightVariants={slideRightVariants} />
-          <Billing slideLeftVariants={slideLeftVariants} />
-          <CardDeal slideRightVariants={slideRightVariants} />
+          <Business scaleUpVariants={scaleUpVariants} />
+          <Billing scaleUpVariants={scaleUpVariants} />
+          <CardDeal scaleUpVariants={scaleUpVariants} />
           <Testimonials />
           <Clients />
           <CTA />

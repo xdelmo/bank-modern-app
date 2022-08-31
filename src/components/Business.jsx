@@ -28,15 +28,8 @@ const FeatureCard = ({ icon, title, content, index }) => (
   </div>
 );
 
-const Business = ({ slideRightVariants }) => (
-  <motion.section
-    id="features"
-    className={layout.section}
-    variants={slideRightVariants}
-    initial={slideRightVariants.hidden}
-    whileInView={slideRightVariants.whileInView}
-    viewport={{ once: true }}
-  >
+const Business = ({ scaleUpVariants }) => (
+  <section id="features" className={layout.section}>
     {/* HEADING + INFO */}
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
@@ -51,12 +44,18 @@ const Business = ({ slideRightVariants }) => (
       <Button styles="mt-10" />
     </div>
     {/* map over features */}
-    <div className={`${layout.sectionImg} flex-col`}>
+    <motion.div
+      className={`${layout.sectionImg} flex-col`}
+      variants={scaleUpVariants}
+      initial={scaleUpVariants.hidden}
+      whileInView={scaleUpVariants.whileInView}
+      viewport={{ once: true }}
+    >
       {features.map((feature, index) => (
         <FeatureCard key={feature.id} {...feature} index={index} />
       ))}
-    </div>
-  </motion.section>
+    </motion.div>
+  </section>
 );
 
 export default Business;

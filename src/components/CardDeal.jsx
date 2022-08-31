@@ -4,14 +4,8 @@ import Button from "./Button";
 import { card } from "../assets";
 import { motion } from "framer-motion";
 
-const CardDeal = ({ slideRightVariants }) => (
-  <motion.section
-    className={layout.section}
-    variants={slideRightVariants}
-    initial={slideRightVariants.hidden}
-    whileInView={slideRightVariants.whileInView}
-    viewport={{ once: true }}
-  >
+const CardDeal = ({ scaleUpVariants }) => (
+  <section className={layout.section}>
     {/* HEADING */}
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
@@ -26,9 +20,17 @@ const CardDeal = ({ slideRightVariants }) => (
     </div>
     {/* IMG */}
     <div className={`${layout.sectionImg}`}>
-      <img src={card} alt="card" className="w-[100%]" />{" "}
+      <motion.img
+        src={card}
+        alt="card"
+        className="w-[100%]"
+        variants={scaleUpVariants}
+        initial={scaleUpVariants.hidden}
+        whileInView={scaleUpVariants.whileInView}
+        viewport={{ once: true }}
+      />
     </div>
-  </motion.section>
+  </section>
 );
 
 export default CardDeal;

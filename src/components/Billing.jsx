@@ -3,21 +3,18 @@ import { apple, bill, google } from "../assets";
 import styles, { layout } from "../style";
 import { motion } from "framer-motion";
 
-const Billing = ({ slideLeftVariants }) => (
-  <motion.section
-    id="product"
-    className={layout.sectionReverse}
-    variants={slideLeftVariants}
-    initial={slideLeftVariants.hidden}
-    whileInView={slideLeftVariants.whileInView}
-    viewport={{ once: true }}
-  >
+const Billing = ({ scaleUpVariants }) => (
+  <section id="product" className={layout.sectionReverse}>
     {/* reverse order on mobile */}
     <div className={layout.sectionImgReverse}>
-      <img
+      <motion.img
         src={bill}
         alt="billing"
         className="w-[100%] h-[100%] relative z-[5]"
+        variants={scaleUpVariants}
+        initial={scaleUpVariants.hidden}
+        whileInView={scaleUpVariants.whileInView}
+        viewport={{ once: true }}
       />
       {/* BACKGROUND GRADIENTS */}
       <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient"></div>
@@ -47,7 +44,7 @@ const Billing = ({ slideLeftVariants }) => (
         />
       </div>
     </div>
-  </motion.section>
+  </section>
 );
 
 export default Billing;
