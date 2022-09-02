@@ -9,7 +9,7 @@ const getStartedVariants = {
     scale: [1, 1.1, 1],
     transition: {
       duration: 3,
-      yoyo: Infinity,
+      repeat: Infinity,
     },
   },
 };
