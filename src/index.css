@@ -132,16 +132,22 @@
       #214d76 100%
     );
     filter: blur(123px);
+    /* to force the browser use GPU acceleration for that particular element instead of the CPU. */
+    transform: translate3d(0, 0, 0);
   }
 
   .pink__gradient {
     background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
     filter: blur(900px);
+    /* to force the browser use GPU acceleration for that particular element instead of the CPU. */
+    transform: translate3d(0, 0, 0);
   }
 
   .white__gradient {
     background: rgba(255, 255, 255, 0.6);
     filter: blur(750px);
+    /* to force the browser use GPU acceleration for that particular element instead of the CPU. */
+    transform: translate3d(0, 0, 0);
   }
 
   .shadowfilter {
