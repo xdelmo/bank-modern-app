@@ -14,7 +14,7 @@ const Billing = ({ scaleUpVariants }) => (
         variants={scaleUpVariants}
         initial={scaleUpVariants.hidden}
         whileInView={scaleUpVariants.whileInView}
-        viewport={{ once: true }}
+        viewport={scaleUpVariants.viewport}
       />
       {/* BACKGROUND GRADIENTS */}
       <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient"></div>

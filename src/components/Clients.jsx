@@ -20,7 +20,7 @@ const clientVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 1,
+      duration: 0.5,
     },
   },
 };

@@ -3,24 +3,39 @@ import styles from "../style";
 import { arrowUp } from "../assets";
 import { motion } from "framer-motion";
 
-const getStartedVariants = {
-  hidden: { scale: 1 },
-  show: {
-    scale: [1, 1.1, 1],
+const scaleUpVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.5,
+  },
+  whileInView: {
+    opacity: 1,
+    scale: 1,
     transition: {
-      duration: 3,
-      repeat: Infinity,
+      delay: 0.5,
+      duration: 0.5,
     },
+  },
+  viewport: { once: true },
+  whileHover: {
+    scale: 1.1,
+    boxShadow: "0px 0px 24px rgba(188, 165, 255, 0.3)",
+  },
+  whileTap: {
+    scale: 0.9,
   },
 };
 
 const GetStarted = () => (
   // BLUE GRADIENT FULL CIRCLE
   <motion.div
-    className={`${styles.flexCenter} w-[140px] h-[140px] bg-blue-gradient rounded-full p-[2px] get-started cursor-pointer shadowfilter`}
-    variants={getStartedVariants}
+    className={`${styles.flexCenter} w-[140px] h-[140px] bg-blue-gradient rounded-full p-[2px] get-started cursor-pointer`}
+    variants={scaleUpVariants}
     initial="hidden"
-    animate="show"
+    whileInView="whileInView"
+    viewport="viewport"
+    whileHover="whileHover"
+    whileTap="whileTap"
   >
     {/* p-[2px] as circle border */}
     {/* DARK FULL CIRCLE OVER THE GRADIENT */}

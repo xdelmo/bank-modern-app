@@ -15,24 +15,24 @@ import {
 } from "./components/";
 
 const App = () => {
-  // const slideRightVariants = {
-  //   hidden: {
-  //     x: "-80%",
-  //     opacity: 0,
-  //   },
-  //   whileInView: {
-  //     x: "0",
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 0.5,
-  //     },
-  //   },
-  //   viewport: { once: true },
-  // };
+  const slideRightVariants = {
+    hidden: {
+      x: "-80%",
+      opacity: 0,
+    },
+    whileInView: {
+      x: "0",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    viewport: { once: true },
+  };
 
   const slideLeftVariants = {
     hidden: {
-      x: "80%vw",
+      x: "30vw",
       opacity: 0,
     },
     whileInView: {
@@ -71,7 +71,10 @@ const App = () => {
 
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero slideLeftVariants={slideLeftVariants} />
+          <Hero
+            slideLeftVariants={slideLeftVariants}
+            slideRightVariants={slideRightVariants}
+          />
         </div>
       </div>
 
