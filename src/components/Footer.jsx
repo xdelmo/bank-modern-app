@@ -47,7 +47,7 @@ const Footer = () => (
       <p className="font-poppins font-normal text-center md:text-left text-[18px] leading-[27px] text-white">
         © 2022 HooBank. All Rights Reserved. <br /> Built by{" "}
         <a
-          href="https://www.linkedin.com/in/emanueledelmonte/"
+          href="https://github.com/xdelmo/bank-modern-app"
           className="cursor-pointer hover:text-secondary"
           rel="noopener noreferrer"
           target="_blank"
