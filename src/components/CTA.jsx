@@ -3,27 +3,13 @@ import styles from "../style";
 import Button from "./Button";
 import { motion } from "framer-motion";
 
-const CTAVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.5,
-  },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1,
-    },
-  },
-};
-
-const CTA = () => (
+const CTA = ({ scaleUpVariants }) => (
   <motion.section
     className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow items-center`}
-    variants={CTAVariants}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true }}
+    variants={scaleUpVariants}
+    initial={scaleUpVariants.hidden}
+    whileInView={scaleUpVariants.whileInView}
+    viewport={scaleUpVariants.viewport}
   >
     <div className="flex flex-col flex-1">
       <h2 className={styles.heading2}>Let’s try our service now!</h2>

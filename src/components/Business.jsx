@@ -4,11 +4,26 @@ import styles, { layout } from "../style";
 import Button from "./Button";
 import { motion } from "framer-motion";
 
+const featureCardVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 const FeatureCard = ({ icon, title, content, index }) => (
-  <div
+  <motion.div
     className={`flex flex-row items-center p-6 rounded-[20px] ${
       index !== features.length - 1 ? "mb-6" : "mb-0"
     } feature-card`}
+    variants={featureCardVariants}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
   >
     {/* ICON AND ITS CIRCLE */}
     <div
@@ -25,10 +40,10 @@ const FeatureCard = ({ icon, title, content, index }) => (
         {content}
       </p>
     </div>
-  </div>
+  </motion.div>
 );
 
-const Business = ({ scaleUpVariants }) => (
+const Business = () => (
   <section id="features" className={layout.section}>
     {/* HEADING + INFO */}
     <div className={layout.sectionInfo}>
@@ -44,17 +59,11 @@ const Business = ({ scaleUpVariants }) => (
       <Button styles="mt-10" />
     </div>
     {/* map over features */}
-    <motion.div
-      className={`${layout.sectionImg} flex-col`}
-      variants={scaleUpVariants}
-      initial={scaleUpVariants.hidden}
-      whileInView={scaleUpVariants.whileInView}
-      viewport={{ once: true }}
-    >
+    <div className={`${layout.sectionImg} flex-col`}>
       {features.map((feature, index) => (
         <FeatureCard key={feature.id} {...feature} index={index} />
       ))}
-    </motion.div>
+    </div>
   </section>
 );
 

@@ -1,11 +1,26 @@
 import React from "react";
 import styles from "../style";
 import { arrowUp } from "../assets";
+import { motion } from "framer-motion";
+
+const getStartedVariants = {
+  hidden: { scale: 1 },
+  show: {
+    scale: [1, 1.1, 1],
+    transition: {
+      duration: 3,
+      yoyo: Infinity,
+    },
+  },
+};
 
 const GetStarted = () => (
   // BLUE GRADIENT FULL CIRCLE
-  <div
-    className={`${styles.flexCenter} w-[140px] h-[140px] bg-blue-gradient rounded-full p-[2px] cursor-pointer shadowfilter`}
+  <motion.div
+    className={`${styles.flexCenter} w-[140px] h-[140px] bg-blue-gradient rounded-full p-[2px] get-started cursor-pointer shadowfilter`}
+    variants={getStartedVariants}
+    initial="hidden"
+    animate="show"
   >
     {/* p-[2px] as circle border */}
     {/* DARK FULL CIRCLE OVER THE GRADIENT */}
@@ -26,7 +41,7 @@ const GetStarted = () => (
         <span className="text-gradient">Started</span>
       </p>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default GetStarted;

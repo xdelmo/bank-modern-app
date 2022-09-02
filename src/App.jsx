@@ -15,35 +15,35 @@ import {
 } from "./components/";
 
 const App = () => {
-  const slideRightVariants = {
-    hidden: {
-      x: "-80%",
-      opacity: 0,
-    },
-    whileInView: {
-      x: "0",
-      opacity: 1,
-      transition: {
-        duration: 2,
-      },
-    },
-    viewport: { once: true },
-  };
-
-  // const slideLeftVariants = {
+  // const slideRightVariants = {
   //   hidden: {
-  //     x: "80%",
+  //     x: "-80%",
   //     opacity: 0,
   //   },
   //   whileInView: {
   //     x: "0",
   //     opacity: 1,
   //     transition: {
-  //       duration: 2,
+  //       duration: 0.5,
   //     },
   //   },
   //   viewport: { once: true },
   // };
+
+  const slideLeftVariants = {
+    hidden: {
+      x: "80%vw",
+      opacity: 0,
+    },
+    whileInView: {
+      x: "0",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    viewport: { once: true },
+  };
 
   const scaleUpVariants = {
     hidden: {
@@ -54,9 +54,10 @@ const App = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 1,
+        duration: 0.5,
       },
     },
+    viewport: { once: true },
   };
 
   return (
@@ -70,19 +71,19 @@ const App = () => {
 
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero slideRightVariants={slideRightVariants} />
+          <Hero slideLeftVariants={slideLeftVariants} />
         </div>
       </div>
 
       <div className={`bg-primary ${styles.paddingX}  ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Stats />
-          <Business scaleUpVariants={scaleUpVariants} />
+          <Business />
           <Billing scaleUpVariants={scaleUpVariants} />
           <CardDeal scaleUpVariants={scaleUpVariants} />
           <Testimonials />
           <Clients />
-          <CTA />
+          <CTA scaleUpVariants={scaleUpVariants} />
           <Footer />
         </div>
       </div>
