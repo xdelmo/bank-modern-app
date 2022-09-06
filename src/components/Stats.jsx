@@ -37,9 +37,9 @@ const Stats = () => (
     {stats.map((stat) => (
       <motion.div key={stat.id} variants={statVariants}>
         <CountUp
-          start={100}
+          start={0}
           end={stat.value}
-          delay={0}
+          delay={0.5}
           prefix={stat.prefix}
           suffix={stat.suffix}
           enableScrollSpy={true}
