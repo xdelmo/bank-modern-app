@@ -39,7 +39,6 @@ export default function ContactForm({ scaleUpVariants }) {
       type: "textarea",
       placeholder: "Write your message here",
       label: "Message",
-      cols: 30,
       rows: 10,
       required: true,
     },
@@ -56,13 +55,14 @@ export default function ContactForm({ scaleUpVariants }) {
 
   return (
     <motion.section
-      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow items-center`}
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow items-center `}
       variants={scaleUpVariants}
       initial={scaleUpVariants.hidden}
       whileInView={scaleUpVariants.whileInView}
       viewport={{ once: true }}
     >
-      <div className="flex flex-col flex-1">
+      {/* w-full to contain input field into div without overflowing */}
+      <div className="flex flex-col flex-1 w-full p-5">
         <h2 className={`${styles.heading2} mb-5`}>
           Let’s try our service now!
         </h2>

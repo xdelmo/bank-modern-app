@@ -21,10 +21,6 @@ function FormInput(props) {
           className="p-2 mb-2 border-2 rounded-xl"
           // Every time you get out of focus from the input field, the event will trigger
           onBlur={handleFocus}
-          // if click on confirm password input error message will immediately show
-          onFocus={() =>
-            inputProps.name === "confirmPassword" && setIsFocused(true)
-          }
           // convert isFocused from boolean to string variable
           focused={isFocused.toString()}
         />
