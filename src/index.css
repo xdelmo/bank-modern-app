@@ -183,4 +183,13 @@
       padding: 2px;
     }
   }
+
+  /* form errors */
+  input:invalid ~ span {
+    display: block;
+  }
+
+  input:invalid[focused="true"] {
+    border-color: red;
+  }
 }

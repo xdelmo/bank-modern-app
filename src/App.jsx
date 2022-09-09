@@ -10,8 +10,9 @@ import {
   CardDeal,
   Testimonials,
   Clients,
-  CTA,
+  // CTA,
   Footer,
+  ContactForm,
 } from "./components/";
 
 const App = () => {
@@ -86,7 +87,8 @@ const App = () => {
           <CardDeal scaleUpVariants={scaleUpVariants} />
           <Testimonials />
           <Clients />
-          <CTA scaleUpVariants={scaleUpVariants} />
+          {/* <CTA scaleUpVariants={scaleUpVariants} /> */}
+          <ContactForm scaleUpVariants={scaleUpVariants} />
           <Footer />
         </div>
       </div>

@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import Testimonials from "./Testimonials";
 import Hero from "./Hero";
 import ButtonScrollTop from "./ButtonScrollTop";
+import ContactForm from "../components/ContactForm";
 
 export {
   Navbar,
@@ -22,4 +23,5 @@ export {
   Footer,
   Testimonials,
   Hero,
+  ContactForm,
 };
