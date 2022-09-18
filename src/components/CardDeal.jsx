@@ -16,7 +16,7 @@ const CardDeal = ({ scaleUpVariants }) => (
         Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis
         aliquet eget mauris tortor.ç Aliquet ultrices ac, ametau.
       </p>
-      <Button styles="mt-10" />
+      <Button styles="mt-10" type="button" text="Get Started" />
     </div>
     {/* IMG */}
     <div className={`${layout.sectionImg}`}>

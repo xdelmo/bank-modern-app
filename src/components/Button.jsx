@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export const Button = ({ styles }) => (
+export const Button = ({ styles, type, text }) => (
   <motion.button
-    type="button"
+    type={type}
     className={`py-4 px-6 bg-blue-gradient font-poppins font-semibold text-[18px] text-primary outline-none ${styles} rounded-lg`}
     whileHover={{
       scale: 1.1,
@@ -11,7 +11,7 @@ export const Button = ({ styles }) => (
     }}
     whileTap={{ scale: 0.9 }}
   >
-    Get Started
+    {text}
   </motion.button>
 );
 

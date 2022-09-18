@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from "../components/Button";
 import FormInput from "../components/FormInput";
 import styles from "../style";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm({ scaleUpVariants }) {
   const [values, setValues] = useState({
@@ -14,7 +15,7 @@ export default function ContactForm({ scaleUpVariants }) {
   const inputs = [
     {
       id: 1,
-      name: "username",
+      name: "user_name",
       type: "text",
       placeholder: "Username",
       errorMessage:
@@ -25,7 +26,7 @@ export default function ContactForm({ scaleUpVariants }) {
     },
     {
       id: 2,
-      name: "email",
+      name: "user_email",
       type: "email",
       placeholder: "your@email.com",
       errorMessage: "It should be a valid email address",
@@ -35,7 +36,7 @@ export default function ContactForm({ scaleUpVariants }) {
 
     {
       id: 3,
-      name: "textarea",
+      name: "message",
       type: "textarea",
       placeholder: "Write your message here",
       label: "Message",
@@ -44,14 +45,50 @@ export default function ContactForm({ scaleUpVariants }) {
     },
   ];
 
-  function handleSubmit(e) {
-    // prevent refresh page on button click
-    e.preventDefault();
-  }
-
   function onChange(e) {
     setValues({ ...values, [e.target.name]: e.target.value });
   }
+
+  const form = useRef();
+  // states to update DOM and feedback message after clicking on button
+  const [hasBeenSent, SetHasBeenSent] = useState(false);
+  const [messageFeedback, SetMessageFeedback] = useState("");
+  // function to update text to render after sent email
+  const updateFeedback = (text) => {
+    // if email has been sent correctly, text result from emailjs would be "OK"
+    if (text === "OK") {
+      return "Thank you for contacting us!";
+    } else {
+      return "Something went wrong! Please refresh page and try again.";
+    }
+  };
+
+  const sendEmail = (e) => {
+    // preventing page refresh on submit
+    e.preventDefault();
+
+    // import environment variables to link form to emailJS service
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_YOUR_SERVICE_ID,
+        process.env.REACT_APP_YOUR_TEMPLATE_ID,
+        form.current,
+        process.env.REACT_APP_YOUR_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          // update messageFeedback and hasBeenSent states to hide form and display feedback
+          SetMessageFeedback(updateFeedback(result.text));
+          SetHasBeenSent(true);
+        },
+        (error) => {
+          console.log(error.text);
+          SetMessageFeedback(updateFeedback(error.text));
+          SetHasBeenSent(true);
+        }
+      );
+  };
 
   return (
     <motion.section
@@ -66,17 +103,25 @@ export default function ContactForm({ scaleUpVariants }) {
         <h2 className={`${styles.heading2} mb-5`}>
           Let’s try our service now!
         </h2>
-        <form onSubmit={handleSubmit}>
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-            />
-          ))}
-          <Button />
-        </form>
+        {/* display form and its button until email has not been sent */}
+        {/* then display messageFeedback */}
+        {!hasBeenSent ? (
+          <form ref={form} onSubmit={sendEmail}>
+            {inputs.map((input) => (
+              <FormInput
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+            <Button type="submit" text="Submit" />
+          </form>
+        ) : (
+          <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gradient">
+            {messageFeedback}
+          </h4>
+        )}
       </div>
     </motion.section>
   );

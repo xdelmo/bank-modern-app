@@ -14,7 +14,7 @@ function FormInput(props) {
       <label className="mb-1 font-medium text-dimWhite">{label}</label>
 
       {/* use input or textarea accoirding to props.name */}
-      {props.name !== "textarea" ? (
+      {props.name !== "message" ? (
         <input
           {...inputProps}
           onChange={onChange}

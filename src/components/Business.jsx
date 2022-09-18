@@ -56,7 +56,7 @@ const Business = () => (
         building credit, earning rewards and saving money. But with hundreds of
         credit cards on the market.
       </p>
-      <Button styles="mt-10" />
+      <Button styles="mt-10" type="button" text="Get Started" />
     </div>
     {/* map over features */}
     <div className={`${layout.sectionImg} flex-col`}>

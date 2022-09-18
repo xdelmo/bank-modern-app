@@ -20,7 +20,7 @@ const CTA = ({ scaleUpVariants }) => (
     </div>
 
     <div className={`${styles.flexCenter} sm:ml-10 ml-0 my-5 sm:my-0`}>
-      <Button />
+      <Button type="button" text="Get Started" />
     </div>
   </motion.section>
 );

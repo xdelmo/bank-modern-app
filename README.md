@@ -47,6 +47,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Flexbox
 - TailwindCSS
 - Framer Motion
+- EmailJS
 
 ### Useful resources
 
@@ -58,6 +59,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [CodePen](https://codepen.io/widhi_allan/pen/jOBewE) - Pure CSS PNG glow hover animation
 - [Graffino](https://graffino.com/til/CjT2jrcLHP-how-to-fix-filter-blur-performance-issue-in-safari) - How to fix filter blur performance issue in Safari
 - [React CountUp](https://github.com/glennreyes/react-countup) - Create animations that display numerical data in a more interesting way
+- [EmailJS](https://www.emailjs.com/docs/examples/reactjs/) - Send Email Directly From JavaScript using React
+- [ReactJS](https://it.reactjs.org/docs/hooks-reference.html#useref) - useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue)
+- [StackOverflow](https://stackoverflow.com/questions/71607893/how-to-access-env-variables-using-react) - How to access env variables using react?
+- [StackOverflow](https://stackoverflow.com/questions/71357518/odd-error-on-emailjs-when-trying-to-test-form-550-request-failed) - Odd error on EmailJS when trying to test form 550 Request failed
 
 ## Author
 
