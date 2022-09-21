@@ -11,7 +11,7 @@ function FormInput(props) {
 
   return (
     <div className="flex flex-col mb-2 font-poppins">
-      <label className="mb-1 font-medium text-dimWhite">{label}</label>
+      <label className="mb-1 font-medium text-dimWhite">{label}:</label>
 
       {/* use input or textarea accoirding to props.name */}
       {props.name !== "message" ? (

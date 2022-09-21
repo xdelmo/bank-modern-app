@@ -191,5 +191,6 @@
 
   input:invalid[focused="true"] {
     border-color: red;
+    color: red;
   }
 }

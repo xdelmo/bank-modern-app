@@ -63,6 +63,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ReactJS](https://it.reactjs.org/docs/hooks-reference.html#useref) - useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue)
 - [StackOverflow](https://stackoverflow.com/questions/71607893/how-to-access-env-variables-using-react) - How to access env variables using react?
 - [StackOverflow](https://stackoverflow.com/questions/71357518/odd-error-on-emailjs-when-trying-to-test-form-550-request-failed) - Odd error on EmailJS when trying to test form 550 Request failed
+- [Jim Raptis](https://medium.muz.li/15-tips-for-better-ui-forms-744febd107f9) - 15 Tips For Better Forms
 
 ## Author
 

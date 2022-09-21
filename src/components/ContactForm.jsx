@@ -6,12 +6,21 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm({ scaleUpVariants }) {
+  const form = useRef();
+  // states to update DOM and feedback message after clicking on button
+  const [hasBeenSent, SetHasBeenSent] = useState(false);
+  const [messageFeedback, SetMessageFeedback] = useState("");
+  // state to create an animation in the submit button which will be passed as a props
+  const [isLoading, SetIsLoading] = useState(false);
+
+  // state as object to maintain form's input
   const [values, setValues] = useState({
     username: "",
     email: "",
     textarea: "",
   });
 
+  // variable to structure HTML inputs tag in submit form
   const inputs = [
     {
       id: 1,
@@ -45,14 +54,11 @@ export default function ContactForm({ scaleUpVariants }) {
     },
   ];
 
-  function onChange(e) {
+  // update a value everytime it is changed
+  const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-  }
+  };
 
-  const form = useRef();
-  // states to update DOM and feedback message after clicking on button
-  const [hasBeenSent, SetHasBeenSent] = useState(false);
-  const [messageFeedback, SetMessageFeedback] = useState("");
   // function to update text to render after sent email
   const updateFeedback = (text) => {
     // if email has been sent correctly, text result from emailjs would be "OK"
@@ -66,7 +72,7 @@ export default function ContactForm({ scaleUpVariants }) {
   const sendEmail = (e) => {
     // preventing page refresh on submit
     e.preventDefault();
-
+    SetIsLoading(true);
     // import environment variables to link form to emailJS service
     emailjs
       .sendForm(
@@ -100,25 +106,34 @@ export default function ContactForm({ scaleUpVariants }) {
     >
       {/* w-full to contain input field into div without overflowing */}
       <div className="flex flex-col flex-1 w-full p-5">
-        <h2 className={`${styles.heading2} mb-5`}>
-          Let’s try our service now!
-        </h2>
+        <h2 className={`${styles.heading2} `}>Manage your finance with us!</h2>
+        <p className={`${styles.paragraph}`}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
         {/* display form and its button until email has not been sent */}
         {/* then display messageFeedback */}
         {!hasBeenSent ? (
-          <form ref={form} onSubmit={sendEmail}>
-            {inputs.map((input) => (
-              <FormInput
-                key={input.id}
-                {...input}
-                value={values[input.name]}
-                onChange={onChange}
-              />
-            ))}
-            <Button type="submit" text="Submit" />
-          </form>
+          <div>
+            <form ref={form} onSubmit={sendEmail} className="my-5">
+              {inputs.map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  value={values[input.name]}
+                  onChange={onChange}
+                />
+              ))}
+              <Button type="submit" text="Contact Us" isLoading={isLoading} />
+            </form>
+            <h4 className="font-medium font-poppins text-dimWhite">
+              By contacting us you are agreeing to our{" "}
+              <span className="cursor-pointer text-secondary">
+                Terms and Conditions
+              </span>
+            </h4>
+          </div>
         ) : (
-          <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gradient">
+          <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gradient mt-5">
             {messageFeedback}
           </h4>
         )}
